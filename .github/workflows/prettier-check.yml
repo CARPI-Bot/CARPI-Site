@@ -1,0 +1,34 @@
+name: Prettier Check
+
+# Trigger the workflow on push or pull request to main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  prettier-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js (needed for Prettier)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run Prettier to check code formatting
+      - name: Run Prettier check
+        run: npm run prettier:check
+
+      # If the Prettier check fails, the job will fail
