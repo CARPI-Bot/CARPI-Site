@@ -1,4 +1,3 @@
-
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
@@ -11,10 +10,15 @@ function App() {
     <Router>
       <nav>
         <ul>
-          <li><Link to="/">About</Link></li>
-          <li><Link to="/planner">Planner</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
-
+          <li>
+            <Link to="/">About</Link>
+          </li>
+          <li>
+            <Link to="/planner">Planner</Link>
+          </li>
+          <li>
+            <Link to="/settings">Settings</Link>
+          </li>
         </ul>
       </nav>
 
