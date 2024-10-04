@@ -1,7 +1,7 @@
 import Landing from './components/landing'
 const App = () => {
     return (
-        <div className="container mx-auto px-8">
+        <div className="container">
           <Landing />
         </div>
     );

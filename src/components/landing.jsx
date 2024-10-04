@@ -29,7 +29,7 @@ const App = () => {
     };
 
     return (
-        <div className="w-screen h-screen overflow-hidden">
+        <div className="w-screen h-screen overflow-hidden relative">
             {!showNextPage ? (
                 <LandingPage onTransition={handleTransition} />
             ) : (
@@ -38,7 +38,7 @@ const App = () => {
                         initial={{ y: 0 }}
                         animate={{ y: -window.innerHeight }}
                         transition={{ duration: 1 }}
-                        className="h-screen"
+                        className="h-screen w-screen absolute top-0 left-0"
                         style={{ backgroundColor: '#F5CECE' }}
                     >
                     </motion.div>
@@ -46,7 +46,7 @@ const App = () => {
                         initial={{ y: window.innerHeight }}
                         animate={{ y: 0 }}
                         transition={{ duration: 1 }}
-                        className="h-screen"
+                        className="h-screen w-screen absolute top-0 left-0"
                     >
                         <Page2 />
                     </motion.div>
