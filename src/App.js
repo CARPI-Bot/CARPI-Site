@@ -1,12 +1,16 @@
 import './App.css';
 import Logo from './components/Logo';
 import About from './components/About';
+import SearchCourse from './components/SearchCourse';
 
 function App() {
   return (
-    <div style={styles}>
-      <Logo></Logo>
-      <About></About>
+    <div>
+      <div style={styles}>
+        <Logo></Logo>
+        <About></About>
+      </div>
+      <SearchCourse></SearchCourse>
     </div>
   );
 }

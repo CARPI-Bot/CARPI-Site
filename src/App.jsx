@@ -1,10 +1,10 @@
-import Landing from './components/landing'
+import Landing from './components/landing';
 const App = () => {
-    return (
-        <div className="container mx-auto px-8">
-          <Landing />
-        </div>
-    );
+  return (
+    <div className="container">
+      <Landing />
+    </div>
+  );
 };
-  
+
 export default App;
