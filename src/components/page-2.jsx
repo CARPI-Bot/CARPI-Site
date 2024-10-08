@@ -1,12 +1,27 @@
-import React from 'react';
-import 'tailwindcss/tailwind.css';
+import Logo from '../components/Logo';
+import About from '../components/About';
+import SearchCourse from '../components/SearchCourse';
 
 const Page2 = () => {
-    return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">Hello, World!</h1>
-        </div>
-    );
+  return (
+    <div>
+      <div style={styles}>
+        <Logo></Logo>
+        <About></About>
+      </div>
+      <SearchCourse></SearchCourse>
+    </div>
+  );
 };
 
 export default Page2;
+const styles = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  color: 'white',
+  fontSize: '2rem',
+  fontWeight: 'bold',
+  fontFamily: 'sans-serif',
+};
