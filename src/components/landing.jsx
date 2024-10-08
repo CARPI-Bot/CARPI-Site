@@ -44,14 +44,14 @@ const App = () => {
           <motion.div
             initial={{ y: 0 }}
             animate={{ y: -window.innerHeight }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 0.5 }}
             className="h-screen w-screen absolute top-0 left-0"
             style={{ backgroundColor: '#F5CECE' }}
           ></motion.div>
           <motion.div
             initial={{ y: window.innerHeight }}
             animate={{ y: 0 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 0.5 }}
             className="h-screen w-screen absolute top-0 left-0"
           >
             <Page2 />

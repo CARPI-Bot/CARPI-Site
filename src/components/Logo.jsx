@@ -6,20 +6,27 @@ function Header() {
     <header className="bg-black-600 text-black p-4 flex justify-between">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
-          className="size-28 rounded-full m-4"
+          className="size-20 rounded-full m-4"
           src={CARPI}
           alt="Filler"
         ></img>
-        <h1 className="text-5xl font-bold">CARPI</h1>
+        <h1 className="text-3xl font-bold" style={styles.CARPI}>
+          CARPI
+        </h1>
       </div>
     </header>
   );
 }
 
 export default Header;
-// const styles = {
-//   image: {
-//     width: '2px',
-//     height: '2px',
-//   },
-// };
+const styles = {
+  CARPI: {
+    fontFamily: "'Single Day', cursive",
+    fontSize: '2rem',
+    color: '#000',
+    textAlign: 'center',
+    marginTop: '1rem',
+    marginBottom: '1rem',
+    textShadow: '2px 2px 2px #d1d1d1',
+  },
+};

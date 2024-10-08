@@ -1,6 +1,6 @@
 const Courses = () => {
   return (
-    <div className="bg-gray-100 bg-contain p-2 mt-4 rounded-xl">
+    <div className="bg-gray-100 bg-contain p-2 mt-4 rounded-xl drop-shadow-md">
       <div class="Course" style={styles.Course}>
         <div class="Names" style={styles.Names}>
           <h1 class="CourseID" style={styles.CourseID}>
