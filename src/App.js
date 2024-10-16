@@ -1,12 +1,16 @@
 import './App.css';
 import Logo from './components/Logo';
 import About from './components/About';
+import Catalog from './components/course_catalog'
 
 function App() {
   return (
     <div style={styles}>
       <Logo></Logo>
       <About></About>
+    </div>
+    <div>
+        <Catalog></Catalog>
     </div>
   );
 }
