@@ -8,10 +8,12 @@ const styles = {
     padding: '1.75rem',
     marginLeft: '1.25rem',
     borderRadius: '0.75rem',
+    fontFamily: 'Single Day, cursive',
   },
   heading: {
     textAlign: 'left',
     fontSize: '2.25rem',
+    margin: "0px",
   },
   searchFilterContainer: {
     display: 'flex',
@@ -34,7 +36,7 @@ const styles = {
     width: '30%',
   },
   filterAttribute: {
-    fontSize: '15px',
+    fontSize: '20px',
     backgroundColor: '#f3f4f6',
   },
   filterOptions: {
@@ -50,8 +52,8 @@ const styles = {
     marginTop: '10px',
   },
   attribute: {
-    fontSize: '10px',
-    color: '#707070',
+    fontSize: '15px',
+    color: '#8D8D8D',
   },
 };
 
