@@ -6,16 +6,26 @@ import closedIcon from '../assets/images/closed.svg';
 
 const styles = {
   container: {
-    backgroundColor: 'rgb(254, 226, 226)',
+    display: 'flex',
+    flexDirection: 'column',
     width: '50%',
+    height: '50vh',
     padding: '1.75rem',
     marginLeft: '1.25rem',
+
+    backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
   },
+  coursesContainer: {
+    flexGrow: 1,
+    borderRadius: '0.75rem',
+    overflowY: 'auto',
+    paddingBottom: '10px',
+  },
   heading: {
     textAlign: 'left',
-    fontSize: '2.25rem',
+    fontSize: 'max(1.5vw, 28px)',
     margin: "0px",
   },
   searchFilterContainer: {
@@ -51,12 +61,11 @@ const styles = {
     flexDirection: 'row',
     gap: '1rem',
     padding: '0.75rem',
+    marginBottom: '10px',
 
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
-    
-    marginTop: '10px',
   },
   attribute: {
     fontSize: '15px',
@@ -126,7 +135,7 @@ const SearchCourse = () => {
           </div>
         </div>
       )}
-      <div>
+      <div style={styles.coursesContainer}>
         <Courses courses={courseData} />
       </div>
     </div>

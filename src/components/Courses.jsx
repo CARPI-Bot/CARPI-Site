@@ -15,7 +15,7 @@ const Courses = ({ courses }) => {
 
   return (
     <div
-      className="bg-gray-100 bg-contain p-2 mt-4 rounded-xl"
+      className="bg-gray-100 bg-contain p-2 rounded-xl"
       style={styles.Container}
     >
       {courses.map((course, index) => (
@@ -50,8 +50,10 @@ const Courses = ({ courses }) => {
 
 const styles = {
   Container: {
-    maxHeight: '400px',
-    overflowY: 'scroll',
+    borderRadius: '0.75rem',
+    // height: 'calc(50vh - 11rem)',
+    // maxHeight: '100%',
+    // overflowY: 'auto',
   },
   Course: {
     display: 'flex',
