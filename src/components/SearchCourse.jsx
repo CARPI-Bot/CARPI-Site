@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Select from 'react-select';
+
 import Courses from '../components/Courses';
 import filterIcon from '../assets/images/filter.svg';
 import expandedIcon from '../assets/images/expanded.svg';
@@ -52,15 +54,12 @@ const styles = {
     width: '30%',
     fontSize: '20px',
   },
-  filterAttribute: {
-    fontSize: '20px',
-    backgroundColor: '#f3f4f6',
-  },
   filterOptions: {
     display: 'flex',
     flexDirection: 'row',
     gap: '1rem',
     padding: '0.75rem',
+    paddingBottom: '5px',
     marginBottom: '10px',
 
     backgroundColor: '#f3f4f6',
@@ -70,6 +69,8 @@ const styles = {
   attribute: {
     fontSize: '15px',
     color: '#8D8D8D',
+    marginLeft: '10px',
+    marginBottom: '-10px',
   },
 };
 
@@ -79,6 +80,48 @@ const courseData = Array.from({ length: 2000 }, (_, index) => ({
   credits: 4,
   description: `This is a brief description of Course ${index + 1}.`,
 }));
+
+const subjectOptions = [
+  { value: '', label: 'All Subjects' },
+  { value: 'programming', label: 'Programming' },
+  { value: 'math', label: 'Math' },
+  { value: 'science', label: 'Science' },
+];
+
+const attributeOptions = [
+  { value: '', label: 'All Attributes' },
+  { value: 'programming', label: 'Programming' },
+  { value: 'math', label: 'Math' },
+  { value: 'science', label: 'Science' },
+];
+
+const semesterOptions = [
+  { value: '', label: 'All Semesters' },
+  { value: 'Fall', label: 'Fall' },
+  { value: 'Spring', label: 'Spring' },
+  { value: 'Summer', label: 'Summer' },
+];
+
+const customStyles = {
+  control: (base) => ({
+    ...base,
+    backgroundColor: 'none',
+    border: 'none',
+    lineHeight: '20px',
+    padding: '0px',
+    margin: '0px',
+    fontSize: '20px',
+  }),
+  option: (base, { isFocused, isSelected }) => ({
+    ...base,
+    fontSize: '20px',
+    color: isSelected ? '#333' : '#666',
+    backgroundColor: isFocused ? '#f3f4f6' : isSelected ? 'rgb(254, 226, 226)' : '#ffffff',
+    padding: '5px',
+    cursor: 'pointer',
+  }),
+  indicatorSeparator: () => ({ display: 'none' }), // Removes the separator line
+};
 
 const SearchCourse = () => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -106,32 +149,41 @@ const SearchCourse = () => {
         <div style={styles.filterOptions}>
           <div> 
             <div style={styles.attribute}>Subject</div>
-            <select style={styles.filterAttribute} >
-              <option value="">All Subjects</option>
-              <option value="programming">rahh</option>
-              <option value="math">rahh2</option>
-              <option value="science">rahh3</option>
-            </select>
+            <Select
+              className="basic-single"
+              classNamePrefix="select"
+              defaultValue={subjectOptions[0]}
+              isSearchable={true}
+              name="color"
+              options={subjectOptions}
+              styles={customStyles}
+            />
           </div>
 
           <div> 
             <div style={styles.attribute}>Attribute</div>
-            <select style={styles.filterAttribute} >
-              <option value="">All Attributes</option>
-              <option value="programming">Programming</option>
-              <option value="math">Math</option>
-              <option value="science">Science</option>
-            </select>
+            <Select
+              className="basic-single"
+              classNamePrefix="select"
+              defaultValue={attributeOptions[0]}
+              isSearchable={true}
+              name="color"
+              options={attributeOptions}
+              styles={customStyles}
+            />
           </div>
 
           <div> 
             <div style={styles.attribute}>Semesters Offered</div>
-            <select style={styles.filterAttribute} >
-              <option value="">All Semesters</option>
-              <option value="programming">Programming</option>
-              <option value="math">Math</option>
-              <option value="science">Science</option>
-            </select>
+            <Select
+              className="basic-single"
+              classNamePrefix="select"
+              defaultValue={semesterOptions[0]}
+              isSearchable={true}
+              name="color"
+              options={semesterOptions}
+              styles={customStyles}
+            />
           </div>
         </div>
       )}
