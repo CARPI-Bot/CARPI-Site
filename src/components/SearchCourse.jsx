@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import Courses from '../components/Courses';
+import filterIcon from '../assets/images/filter.svg';
+import expandedIcon from '../assets/images/expanded.svg';
+import closedIcon from '../assets/images/closed.svg';
 
 const styles = {
   container: {
@@ -30,10 +33,14 @@ const styles = {
     backgroundColor: '#f3f4f6',
   },
   filter: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '10px',
     padding: '0.75rem',
     borderRadius: '0.5rem',
     backgroundColor: 'rgb(254, 226, 226)',
     width: '30%',
+    fontSize: '20px',
   },
   filterAttribute: {
     fontSize: '20px',
@@ -80,7 +87,10 @@ const SearchCourse = () => {
           style={styles.filter}
           onClick={() => setShowFilterOptions(!showFilterOptions)}
         >
+          <img src={filterIcon} alt="filter icon"></img>          
           Filter
+         {!showFilterOptions && (<img src={closedIcon} alt="closed icon"></img>)}
+         {showFilterOptions && (<img src={expandedIcon} alt="closed icon"></img>)}       
         </div>
       </div>
       {showFilterOptions && (
