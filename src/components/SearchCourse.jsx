@@ -111,6 +111,7 @@ const customStyles = {
     padding: '0px',
     margin: '0px',
     fontSize: '20px',
+    width: '200px',
   }),
   option: (base, { isFocused, isSelected }) => ({
     ...base,
@@ -119,6 +120,10 @@ const customStyles = {
     backgroundColor: isFocused ? '#f3f4f6' : isSelected ? 'rgb(254, 226, 226)' : '#ffffff',
     padding: '5px',
     cursor: 'pointer',
+  }),
+  menu: (base) => ({
+    ...base,
+    width: '400px',
   }),
   indicatorSeparator: () => ({ display: 'none' }), // Removes the separator line
 };
