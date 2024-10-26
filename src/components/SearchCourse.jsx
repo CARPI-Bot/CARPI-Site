@@ -28,7 +28,7 @@ const styles = {
   heading: {
     textAlign: 'left',
     fontSize: 'max(1.5vw, 28px)',
-    margin: "0px",
+    margin: '0px',
   },
   searchFilterContainer: {
     display: 'flex',
@@ -117,7 +117,11 @@ const customStyles = {
     ...base,
     fontSize: '20px',
     color: isSelected ? '#333' : '#666',
-    backgroundColor: isFocused ? '#f3f4f6' : isSelected ? 'rgb(254, 226, 226)' : '#ffffff',
+    backgroundColor: isFocused
+      ? '#f3f4f6'
+      : isSelected
+        ? 'rgb(254, 226, 226)'
+        : '#ffffff',
     padding: '5px',
     cursor: 'pointer',
   }),
@@ -144,15 +148,17 @@ const SearchCourse = () => {
           style={styles.filter}
           onClick={() => setShowFilterOptions(!showFilterOptions)}
         >
-          <img src={filterIcon} alt="filter icon"></img>          
+          <img src={filterIcon} alt="filter icon"></img>
           Filter
-         {!showFilterOptions && (<img src={closedIcon} alt="closed icon"></img>)}
-         {showFilterOptions && (<img src={expandedIcon} alt="closed icon"></img>)}       
+          {!showFilterOptions && <img src={closedIcon} alt="closed icon"></img>}
+          {showFilterOptions && (
+            <img src={expandedIcon} alt="closed icon"></img>
+          )}
         </div>
       </div>
       {showFilterOptions && (
         <div style={styles.filterOptions}>
-          <div> 
+          <div>
             <div style={styles.attribute}>Subject</div>
             <Select
               className="basic-single"
@@ -165,7 +171,7 @@ const SearchCourse = () => {
             />
           </div>
 
-          <div> 
+          <div>
             <div style={styles.attribute}>Attribute</div>
             <Select
               className="basic-single"
@@ -178,7 +184,7 @@ const SearchCourse = () => {
             />
           </div>
 
-          <div> 
+          <div>
             <div style={styles.attribute}>Semesters Offered</div>
             <Select
               className="basic-single"
