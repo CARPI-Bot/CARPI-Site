@@ -1,12 +1,12 @@
 import CARPI from '../assets/images/Transparent_Carpi.svg';
-import '../assets/css/Logo.css';
+import '../assets/css/font.css';
 
 function Header() {
   return (
-    <header className="bg-black-600 text-black p-4 flex justify-between">
+    <header className="bg-black-600 text-black mt-6 mb-4 flex justify-between">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
-          className="size-20 rounded-full m-4"
+          className="size-20 rounded-full ml-8"
           src={CARPI}
           alt="Filler"
         ></img>
