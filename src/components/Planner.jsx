@@ -60,14 +60,14 @@ const Planner = () => {
       <h1 className="text-left text-2xl pb-4">Course Planner</h1>
       <div className="space-y-4 max-h-[500px] overflow-y-auto min-h-[500px]">
         {semesters.map((semester) => (
-          <div key={semester.id} className="bg-gray-200 p-4 rounded-lg">
+          <div key={semester.id} className="bg-gray-100 p-4 rounded-lg">
             <h2
-              className="text-xl pb-2 font-semibold cursor-pointer"
+              className="text-xl pb-2 ml-8 font-semibold cursor-pointer"
               onClick={() => openModal(semester)}
             >
               {semester.name}
             </h2>
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col items-center">
               {semester.courses.map((course, index) => (
                 <div
                   key={index}
