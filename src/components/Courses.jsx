@@ -15,7 +15,7 @@ const Courses = ({ courses }) => {
 
   return (
     <div
-      className="bg-gray-100 bg-contain p-2 mt-4 rounded-xl"
+      className="bg-gray-100 bg-contain p-2 mt-8 rounded-xl max-h-full"
       style={styles.Container}
     >
       {courses.map((course, index) => (
@@ -50,7 +50,7 @@ const Courses = ({ courses }) => {
 
 const styles = {
   Container: {
-    maxHeight: '400px',
+    maxHeight: '500px', // Increased max height for a larger view
     overflowY: 'scroll',
   },
   Course: {
@@ -59,6 +59,10 @@ const styles = {
     marginLeft: '1em',
     justifyContent: 'space-between',
     cursor: 'pointer',
+    padding: '1em',
+    backgroundColor: '#f8f8f8',
+    borderRadius: '8px',
+    marginBottom: '8px',
   },
   Names: {
     display: 'flex',
@@ -82,7 +86,7 @@ const styles = {
     marginRight: '1em',
   },
   CourseBlurb: {
-    marginLeft: '1em',
+    marginLeft: '2em',
     marginTop: '0.5em',
     fontSize: '1em',
     color: '#555',

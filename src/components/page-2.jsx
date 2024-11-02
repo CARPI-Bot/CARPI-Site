@@ -12,6 +12,7 @@ const Page2 = () => {
       </div>
       <div style={styles.courses}>
         <SearchCourse></SearchCourse>
+        {/* <SearchCourse></SearchCourse> */}
         <Planner></Planner>
       </div>
     </div>
