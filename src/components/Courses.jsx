@@ -15,7 +15,7 @@ const Courses = ({ courses }) => {
 
   return (
     <div
-      className="bg-gray-100 bg-contain p-2 mt-8 rounded-xl max-h-full"
+      className="bg-gray-100 bg-contain p-2 mt-2 rounded-xl max-h-full"
       style={styles.Container}
     >
       {courses.map((course, index) => (
