@@ -71,7 +71,7 @@ const Planner = () => {
               {semester.courses.map((course, index) => (
                 <div
                   key={index}
-                  className="bg-red-300 text-white text-left py-2 px-4 rounded-full"
+                  className="bg-red-300 text-white text-left py-2 px-4 rounded-full w-11/12"
                 >
                   {course}
                 </div>
