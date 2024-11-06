@@ -40,7 +40,7 @@ const App = () => {
       {!showNextPage ? (
         <LandingPage onTransition={handleTransition} />
       ) : (
-        <>
+        <React.Fragment>
           <motion.div
             initial={{ y: 0 }}
             animate={{ y: -window.innerHeight }}
@@ -56,7 +56,7 @@ const App = () => {
           >
             <Page2 />
           </motion.div>
-        </>
+        </React.Fragment>
       )}
     </div>
   );
