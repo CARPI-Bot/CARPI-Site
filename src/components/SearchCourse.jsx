@@ -11,7 +11,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     width: '50%',
-    height: '50vh',
+    minHeight: '25em',
     padding: '1.75rem',
     marginLeft: '1.25rem',
 
@@ -24,6 +24,8 @@ const styles = {
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
+    maxHeight: '500px',
+    minHeight: '500px',
   },
   heading: {
     textAlign: 'left',
@@ -35,7 +37,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     gap: '10px',
-    marginBottom: '10px',
+    marginBottom: '5px',
   },
   input: {
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
@@ -61,7 +63,6 @@ const styles = {
     padding: '0.75rem',
     paddingBottom: '5px',
     marginBottom: '10px',
-
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
@@ -129,7 +130,7 @@ const customStyles = {
     ...base,
     width: '400px',
   }),
-  indicatorSeparator: () => ({ display: 'none' }), // Removes the separator line
+  indicatorSeparator: () => ({ display: 'none' }),
 };
 
 const SearchCourse = () => {
@@ -148,12 +149,10 @@ const SearchCourse = () => {
           style={styles.filter}
           onClick={() => setShowFilterOptions(!showFilterOptions)}
         >
-          <img src={filterIcon} alt="filter icon"></img>
+          <img src={filterIcon} alt="filter icon" />
           Filter
-          {!showFilterOptions && <img src={closedIcon} alt="closed icon"></img>}
-          {showFilterOptions && (
-            <img src={expandedIcon} alt="closed icon"></img>
-          )}
+          {!showFilterOptions && <img src={closedIcon} alt="closed icon" />}
+          {showFilterOptions && <img src={expandedIcon} alt="closed icon" />}
         </div>
       </div>
       {showFilterOptions && (
@@ -164,34 +163,32 @@ const SearchCourse = () => {
               className="basic-single"
               classNamePrefix="select"
               defaultValue={subjectOptions[0]}
-              isSearchable={true}
-              name="color"
+              isSearchable
+              name="subject"
               options={subjectOptions}
               styles={customStyles}
             />
           </div>
-
           <div>
             <div style={styles.attribute}>Attribute</div>
             <Select
               className="basic-single"
               classNamePrefix="select"
               defaultValue={attributeOptions[0]}
-              isSearchable={true}
-              name="color"
+              isSearchable
+              name="attribute"
               options={attributeOptions}
               styles={customStyles}
             />
           </div>
-
           <div>
             <div style={styles.attribute}>Semesters Offered</div>
             <Select
               className="basic-single"
               classNamePrefix="select"
               defaultValue={semesterOptions[0]}
-              isSearchable={true}
-              name="color"
+              isSearchable
+              name="semester"
               options={semesterOptions}
               styles={customStyles}
             />
