@@ -26,7 +26,7 @@ const Planner = () => {
     const newSemester = {
       id: semesters.length + 1,
       name: `Semester ${semesters.length + 1}`,
-      courses: [],
+      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
     };
     setSemesters([...semesters, newSemester]);
   };
