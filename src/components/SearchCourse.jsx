@@ -14,18 +14,18 @@ const styles = {
     minHeight: '25em',
     padding: '1.75rem',
     marginLeft: '1.25rem',
-
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
+    height: '656px', // Set a fixed height
+    overflow: 'hidden', // Hide overflow to prevent height shift
   },
   coursesContainer: {
     flexGrow: 1,
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: '500px',
-    minHeight: '500px',
+    maxHeight: 'calc(100% - 150px)', // Adjust max height to account for filter options
   },
   heading: {
     textAlign: 'left',
@@ -66,6 +66,8 @@ const styles = {
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
+    overflowY: 'auto', // Enable vertical scrolling for filter options
+    maxHeight: '150px', // Set a max height for filter options
   },
   attribute: {
     fontSize: '15px',
