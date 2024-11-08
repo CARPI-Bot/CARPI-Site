@@ -12,7 +12,7 @@ const styles = {
     flexDirection: 'column',
     width: '50%',
     minHeight: '25em',
-    padding: '1.75rem',
+    padding: '1.25rem',
     marginLeft: '1.25rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
@@ -29,7 +29,6 @@ const styles = {
   },
   heading: {
     textAlign: 'left',
-
     margin: '0px',
   },
   searchFilterContainer: {
@@ -38,6 +37,7 @@ const styles = {
     alignItems: 'center',
     gap: '10px',
     marginBottom: '5px',
+    width: '100%',
   },
   input: {
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
@@ -66,8 +66,6 @@ const styles = {
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
-    overflowY: 'auto', // Enable vertical scrolling for filter options
-    maxHeight: '150px', // Set a max height for filter options
   },
   attribute: {
     fontSize: '15px',
@@ -135,12 +133,17 @@ const customStyles = {
   indicatorSeparator: () => ({ display: 'none' }),
 };
 
-const SearchCourse = () => {
+const SearchCourse = ({ isToolboxExpanded }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
 
   return (
-    <div style={styles.container}>
-      <h1 className="text-left text-2xl pb-5">Search Course</h1>
+    <div
+      style={{
+        ...styles.container,
+        height: isToolboxExpanded ? '32em' : '36em',
+      }}
+    >
+      <h1 className="text-left text-2xl pb-2">Search Course</h1>
       <div style={styles.searchFilterContainer}>
         <input
           type="text"

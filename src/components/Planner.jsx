@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 
-const Planner = () => {
+const Planner = ({ isToolboxExpanded }) => {
   const [semesters, setSemesters] = useState([
     {
       id: 1,
       name: 'Semester 1',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
+      courses: ['Course 1', 'Course 2', 'Course 3'],
     },
     {
       id: 2,
       name: 'Semester 2',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    },
-    {
-      id: 3,
-      name: 'Semester 3',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
+      courses: ['Course 1', 'Course 2', 'Course 3'],
     },
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [newSemesterName, setNewSemesterName] = useState('');
+  const [newCourse, setNewCourse] = useState('');
 
   const addSemester = () => {
     const newSemester = {
       id: semesters.length + 1,
       name: `Semester ${semesters.length + 1}`,
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'], // Default courses
+      courses: [], // Empty courses initially
     };
     setSemesters([...semesters, newSemester]);
   };
@@ -54,18 +50,47 @@ const Planner = () => {
     closeModal();
   };
 
+  const addCourse = (semesterId) => {
+    setSemesters(
+      semesters.map((semester) =>
+        semester.id === semesterId
+          ? { ...semester, courses: [...semester.courses, newCourse] }
+          : semester,
+      ),
+    );
+    setNewCourse('');
+  };
+
+  const deleteSemester = (semesterId) => {
+    setSemesters(semesters.filter((semester) => semester.id !== semesterId));
+  };
+
   return (
-    <div className="bg-red-100 bg-contain w-6/12 p-5 ml-8 rounded-xl min-h-[10em]">
-      <h1 className="text-left text-2xl pb-5">Course Planner</h1>
+    <div
+      className="bg-red-100 w-6/12 p-5 ml-8 rounded-xl min-h-[10em]"
+      style={{
+        height: isToolboxExpanded ? '32em' : '36em', // Adjust height dynamically
+        transition: 'height 0.3s ease', // Smooth transition effect
+      }}
+    >
+      <h1 className="text-left text-2xl pb-2">Course Planner</h1>
       <div className="space-y-4 max-h-[350px] overflow-y-auto min-h-[100px]">
         {semesters.map((semester) => (
           <div key={semester.id} className="bg-gray-100 p-4 rounded-lg">
-            <h2
-              className="text-xl pb-2 ml-8 font-semibold cursor-pointer"
-              onClick={() => openModal(semester)}
-            >
-              {semester.name}
-            </h2>
+            <div className="flex justify-between items-center">
+              <h2
+                className="text-xl pb-2 ml-8 font-semibold cursor-pointer"
+                onClick={() => openModal(semester)}
+              >
+                {semester.name}
+              </h2>
+              <button
+                onClick={() => deleteSemester(semester.id)}
+                className="text-red-500"
+              >
+                Delete
+              </button>
+            </div>
             <div className="space-y-2 flex flex-col items-center">
               {semester.courses.map((course, index) => (
                 <div
@@ -75,6 +100,21 @@ const Planner = () => {
                   {course}
                 </div>
               ))}
+            </div>
+            <div className="flex mt-2">
+              <input
+                type="text"
+                value={newCourse}
+                onChange={(e) => setNewCourse(e.target.value)}
+                placeholder="New Course"
+                className="border border-gray-300 rounded w-full p-2"
+              />
+              <button
+                onClick={() => addCourse(semester.id)}
+                className="bg-red-300 text-white px-4 py-2 rounded ml-2"
+              >
+                Add Course
+              </button>
             </div>
           </div>
         ))}
