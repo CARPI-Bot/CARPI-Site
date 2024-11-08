@@ -17,19 +17,19 @@ const styles = {
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
-    height: '656px', // Set a fixed height
-    overflow: 'hidden', // Hide overflow to prevent height shift
+    height: '32em',
+    overflow: 'hidden',
   },
   coursesContainer: {
     flexGrow: 1,
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: 'calc(100% - 100px)', // Adjust max height to account for filter options
+    maxHeight: 'calc(100% - 90px)',
   },
   heading: {
     textAlign: 'left',
-    fontSize: 'max(1.5vw, 28px)',
+
     margin: '0px',
   },
   searchFilterContainer: {
@@ -140,7 +140,7 @@ const SearchCourse = () => {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Search Course</h1>
+      <h1 className="text-left text-2xl pb-5">Search Course</h1>
       <div style={styles.searchFilterContainer}>
         <input
           type="text"

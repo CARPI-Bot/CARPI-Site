@@ -55,9 +55,9 @@ const Planner = () => {
   };
 
   return (
-    <div className="bg-red-100 bg-contain w-6/12 p-5 ml-8 rounded-xl min-h-[25em]">
+    <div className="bg-red-100 bg-contain w-6/12 p-5 ml-8 rounded-xl min-h-[10em]">
       <h1 className="text-left text-2xl pb-5">Course Planner</h1>
-      <div className="space-y-4 max-h-[500px] overflow-y-auto min-h-[500px]">
+      <div className="space-y-4 max-h-[350px] overflow-y-auto min-h-[100px]">
         {semesters.map((semester) => (
           <div key={semester.id} className="bg-gray-100 p-4 rounded-lg">
             <h2

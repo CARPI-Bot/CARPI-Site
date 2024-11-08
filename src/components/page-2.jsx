@@ -2,6 +2,7 @@ import Logo from './Header';
 import About from '../components/About';
 import SearchCourse from '../components/SearchCourse';
 import Planner from '../components/Planner';
+import Toolbox from '../components/Toolbox';
 
 const Page2 = () => {
   return (
@@ -10,10 +11,13 @@ const Page2 = () => {
         <Logo></Logo>
         <About></About>
       </div>
-      <div style={styles.courses}>
-        <SearchCourse></SearchCourse>
-        {/* <SearchCourse></SearchCourse> */}
-        <Planner></Planner>
+      <div style={styles.section}>
+        <div style={styles.courses}>
+          <SearchCourse></SearchCourse>
+          {/* <SearchCourse></SearchCourse> */}
+          <Planner></Planner>
+        </div>
+        <Toolbox></Toolbox>
       </div>
     </div>
   );
@@ -35,8 +39,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     color: 'black',
-    marginRight: '4rem',
+  },
+  section: {
+    marginRight: '4em',
   },
 };
