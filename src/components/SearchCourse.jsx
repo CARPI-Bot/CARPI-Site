@@ -25,7 +25,7 @@ const styles = {
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: 'calc(100% - 150px)', // Adjust max height to account for filter options
+    maxHeight: 'calc(100% - 100px)', // Adjust max height to account for filter options
   },
   heading: {
     textAlign: 'left',
