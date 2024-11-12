@@ -6,7 +6,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    minHeight: '2em',
+    minHeight: '5em',
     padding: '1rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',

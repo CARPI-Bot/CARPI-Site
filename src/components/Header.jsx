@@ -3,7 +3,7 @@ import '../assets/css/font.css';
 
 function Header() {
   return (
-    <header className="bg-black-600 text-black mt-6 mb-4 flex justify-between">
+    <header className="bg-black-600 text-black mt-4 mb-2 flex justify-between">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
           className="size-24 rounded-full ml-8"
