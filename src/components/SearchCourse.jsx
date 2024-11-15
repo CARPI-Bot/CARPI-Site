@@ -110,7 +110,7 @@ const customStyles = {
     padding: '0px',
     margin: '0px',
     fontSize: '20px',
-    width: '200px',
+    width: '175px',
   }),
   option: (base, { isFocused, isSelected }) => ({
     ...base,
