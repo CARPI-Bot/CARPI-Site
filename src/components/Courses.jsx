@@ -25,6 +25,7 @@ const Courses = ({ courses }) => {
             style={styles.Course}
             onClick={() => toggleDropdown(index)}
           >
+
             <div className="Names" style={styles.Names}>
               <h1 className="CourseID" style={styles.CourseID}>
                 {course.id}
@@ -32,16 +33,17 @@ const Courses = ({ courses }) => {
               <h1 className="CourseName" style={styles.CourseName}>
                 {course.name}
               </h1>
+              <h1 className="CourseCredit" style={styles.CourseCredit}>
+                {course.credits} Credits
+              </h1>
             </div>
-            <h1 className="CourseCredit" style={styles.CourseCredit}>
-              {course.credits} Credits
-            </h1>
+
+            {openCourses[index] && (
+              <div className="CourseBlurb" style={styles.CourseBlurb}>
+                <p>{course.description}</p>
+              </div>
+            )}
           </div>
-          {openCourses[index] && (
-            <div className="CourseBlurb" style={styles.CourseBlurb}>
-              <p>{course.description}</p>
-            </div>
-          )}
         </div>
       ))}
     </div>
@@ -54,8 +56,8 @@ const styles = {
     overflowY: 'scroll',
   },
   Course: {
-    display: 'flex',
-    flexDirection: 'row',
+    // display: 'flex',
+    // flexDirection: 'row',
     marginLeft: '1em',
     justifyContent: 'space-between',
     cursor: 'pointer',
