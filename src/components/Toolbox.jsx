@@ -5,22 +5,22 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '100%',
-    minHeight: '5em',
+    height: 'calc(100% - 10em)',
     padding: '1rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
-    height: '20vh',
-    marginLeft: '1.25rem',
-    marginTop: '1.25rem',
-    transition: 'height 0.3s ease', // Smooth transition for collapse
+    marginTop: '1rem',
+    marginBottom: '1rem',
+
+    transition: 'height 0.3s ease',
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     cursor: 'pointer',
+    marginLeft: '1rem',
   },
   space: {
     width: '100%',
@@ -33,7 +33,7 @@ const styles = {
 
 const Toolbox = ({ isExpanded, toggleExpand }) => {
   return (
-    <div style={{ ...styles.container, height: isExpanded ? '20vh' : '2em' }}>
+    <div style={{ ...styles.container, height: isExpanded ? '20vh' : '4em' }}>
       <div style={styles.header} onClick={toggleExpand}>
         <h1 className="text-left text-2xl pb-2">Toolbox</h1>
         <img

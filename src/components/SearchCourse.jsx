@@ -13,7 +13,6 @@ const styles = {
     width: '50%',
     minHeight: '25em',
     padding: '1.25rem',
-    marginLeft: '1.25rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',

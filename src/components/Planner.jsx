@@ -2,18 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../assets/transparent_carpi.png';
 
 const Planner = ({ isToolboxExpanded }) => {
-  const [semesters, setSemesters] = useState([
-    {
-      id: 1,
-      name: 'Semester 1',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    },
-    {
-      id: 2,
-      name: 'Semester 2',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    },
-  ]);
+  const [semesters, setSemesters] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [newSemesterName, setNewSemesterName] = useState('');
