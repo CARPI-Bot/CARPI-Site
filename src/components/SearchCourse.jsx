@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Select from 'react-select';
 
 import Courses from '../components/Courses';
@@ -77,34 +78,6 @@ const styles = {
   },
 };
 
-const courseData = Array.from({ length: 2000 }, (_, index) => ({
-  id: `Test ${index + 1}`,
-  name: `CourseName ${index + 1}`,
-  credits: 4,
-  description: `This is a brief description of Course ${index + 1}.`,
-}));
-
-const subjectOptions = [
-  { value: '', label: 'All Subjects' },
-  { value: 'programming', label: 'Programming' },
-  { value: 'math', label: 'Math' },
-  { value: 'science', label: 'Science' },
-];
-
-const attributeOptions = [
-  { value: '', label: 'All Attributes' },
-  { value: 'programming', label: 'Programming' },
-  { value: 'math', label: 'Math' },
-  { value: 'science', label: 'Science' },
-];
-
-const semesterOptions = [
-  { value: '', label: 'All Semesters' },
-  { value: 'Fall', label: 'Fall' },
-  { value: 'Spring', label: 'Spring' },
-  { value: 'Summer', label: 'Summer' },
-];
-
 const customStyles = {
   control: (base) => ({
     ...base,
@@ -135,8 +108,84 @@ const customStyles = {
   indicatorSeparator: () => ({ display: 'none' }),
 };
 
+const subjectOptions = [
+  { value: '', label: 'All Subjects' },
+  { value: 'programming', label: 'Programming' },
+  { value: 'math', label: 'Math' },
+  { value: 'science', label: 'Science' },
+  // Add more subjects as needed
+];
+
+const attributeOptions = [
+  { value: '', label: 'All Attributes' },
+  { value: 'online', label: 'Online' },
+  { value: 'in-person', label: 'In-Person' },
+  // Add more attributes as needed
+];
+
+const semesterOptions = [
+  { value: '', label: 'All Semesters' },
+  { value: 'Fall', label: 'Fall' },
+  { value: 'Spring', label: 'Spring' },
+  { value: 'Summer', label: 'Summer' },
+  // Add more semesters as needed
+];
+
 const SearchCourse = () => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
+  const [courses, setCourses] = useState([]);
+  const [searchPrompt, setSearchPrompt] = useState('');
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [selectedAttributes, setSelectedAttributes] = useState([]);
+  const [selectedSemesters, setSelectedSemesters] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('/api/v1/course/all');
+        setCourses(response.data);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const handleSearch = async () => {
+    const params = new URLSearchParams();
+
+    if (searchPrompt) {
+      params.append('searchPrompt', searchPrompt);
+    }
+    if (selectedSubjects.length > 0) {
+      params.append(
+        'deptFilters',
+        selectedSubjects.map((s) => s.value).join(','),
+      );
+    }
+    if (selectedAttributes.length > 0) {
+      params.append(
+        'attrFilters',
+        selectedAttributes.map((a) => a.value).join(','),
+      );
+    }
+    if (selectedSemesters.length > 0) {
+      params.append(
+        'semFilters',
+        selectedSemesters.map((s) => s.value).join(','),
+      );
+    }
+
+    try {
+      const response = await axios.get(
+        `/api/v1/course/search?${params.toString()}`,
+      );
+      setCourses(response.data);
+    } catch (error) {
+      console.error('Error searching courses:', error);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -146,6 +195,8 @@ const SearchCourse = () => {
           type="text"
           style={styles.input}
           placeholder="Find Courses Here..."
+          value={searchPrompt}
+          onChange={(e) => setSearchPrompt(e.target.value)}
         />
         <div
           style={styles.filter}
@@ -156,6 +207,7 @@ const SearchCourse = () => {
           {!showFilterOptions && <img src={closedIcon} alt="closed icon" />}
           {showFilterOptions && <img src={expandedIcon} alt="closed icon" />}
         </div>
+        <button onClick={handleSearch}>Search</button>
       </div>
       {showFilterOptions && (
         <div style={styles.filterOptions}>
@@ -169,6 +221,8 @@ const SearchCourse = () => {
               name="subject"
               options={subjectOptions}
               styles={customStyles}
+              onChange={setSelectedSubjects}
+              isMulti
             />
           </div>
           <div>
@@ -181,6 +235,8 @@ const SearchCourse = () => {
               name="attribute"
               options={attributeOptions}
               styles={customStyles}
+              onChange={setSelectedAttributes}
+              isMulti
             />
           </div>
           <div>
@@ -193,12 +249,14 @@ const SearchCourse = () => {
               name="semester"
               options={semesterOptions}
               styles={customStyles}
+              onChange={setSelectedSemesters}
+              isMulti
             />
           </div>
         </div>
       )}
       <div style={styles.coursesContainer}>
-        <Courses courses={courseData} />
+        <Courses courses={courses} />
       </div>
     </div>
   );
