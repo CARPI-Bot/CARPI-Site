@@ -24,8 +24,6 @@ const styles = {
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: '500px',
-    minHeight: '500px',
   },
   heading: {
     textAlign: 'left',
