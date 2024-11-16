@@ -131,6 +131,8 @@ const semesterOptions = [
   // Add more semesters as needed
 ];
 
+const HOST = process.env.REACT_APP_API_HOST;
+
 const SearchCourse = () => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [courses, setCourses] = useState([]);
@@ -142,7 +144,7 @@ const SearchCourse = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('/api/v1/course/all');
+        const response = await axios.get(`${HOST}/api/v1/course/all`);
         setCourses(response.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -179,7 +181,7 @@ const SearchCourse = () => {
 
     try {
       const response = await axios.get(
-        `/api/v1/course/search?${params.toString()}`,
+        `${HOST}/api/v1/course/search?${params.toString()}`,
       );
       setCourses(response.data);
     } catch (error) {
@@ -197,6 +199,7 @@ const SearchCourse = () => {
           placeholder="Find Courses Here..."
           value={searchPrompt}
           onChange={(e) => setSearchPrompt(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
         />
         <div
           style={styles.filter}
