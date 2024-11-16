@@ -13,6 +13,13 @@ const Courses = ({ courses }) => {
     });
   };
 
+  const displayCredit = (minCredit, maxCredit) => {
+    if (minCredit === maxCredit) {
+      return `${minCredit} Credits`;
+    }
+    return `${minCredit} - ${maxCredit} Credits`;
+  };
+
   return (
     <div
       className="bg-gray-100 bg-contain p-2 mt-2 rounded-xl max-h-full"
@@ -27,14 +34,14 @@ const Courses = ({ courses }) => {
           >
             <div className="Names" style={styles.Names}>
               <h1 className="CourseID" style={styles.CourseID}>
-                {course.id}
+                {course.department}-{course.code}
               </h1>
               <h1 className="CourseName" style={styles.CourseName}>
-                {course.name}
+                {course.title}
               </h1>
             </div>
             <h1 className="CourseCredit" style={styles.CourseCredit}>
-              {course.credits} Credits
+              {displayCredit(course.creditMin, course.creditMax)}
             </h1>
           </div>
           {openCourses[index] && (
