@@ -232,6 +232,7 @@ const SearchCourse = () => {
               name="subject"
               options={subjectOptions}
               styles={customStyles}
+              value={selectedSubjects}
               onChange={setSelectedSubjects}
               menuPosition={'fixed'}
               isMulti
@@ -247,6 +248,7 @@ const SearchCourse = () => {
               name="attribute"
               options={attributeOptions}
               styles={customStyles}
+              value={selectedAttributes}
               onChange={setSelectedAttributes}
               menuPosition={'fixed'}
               isMulti
@@ -262,6 +264,7 @@ const SearchCourse = () => {
               name="semester"
               options={semesterOptions}
               styles={customStyles}
+              value={selectedSemesters}
               onChange={setSelectedSemesters}
               menuPosition={'fixed'}
               isMulti
