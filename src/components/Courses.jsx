@@ -98,7 +98,9 @@ const styles = {
   },
   CourseBlurb: {
     marginLeft: '2em',
+    marginRight: '2em',
     marginTop: '0.5em',
+    marginBottom: '0.5em',
     fontSize: '1em',
     color: '#555',
     backgroundColor: '#e0e0e0', // Slightly darker background color
