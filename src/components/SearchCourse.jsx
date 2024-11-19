@@ -66,20 +66,19 @@ const styles = {
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
-    overflowY: 'auto',
-    maxHeight: '150px',
   },
   attribute: {
     fontSize: '15px',
     color: '#8D8D8D',
     marginLeft: '10px',
-    marginBottom: '-10px',
+    marginBottom: '-5px',
   },
 };
 
 const customStyles = {
   control: (base) => ({
     ...base,
+    display: 'flex',
     backgroundColor: 'none',
     border: 'none',
     lineHeight: '20px',
@@ -102,7 +101,6 @@ const customStyles = {
   }),
   menu: (base) => ({
     ...base,
-    width: '400px',
   }),
   indicatorSeparator: () => ({ display: 'none' }),
 };
@@ -235,6 +233,7 @@ const SearchCourse = () => {
               options={subjectOptions}
               styles={customStyles}
               onChange={setSelectedSubjects}
+              menuPosition={'fixed'}
               isMulti
             />
           </div>
@@ -249,6 +248,7 @@ const SearchCourse = () => {
               options={attributeOptions}
               styles={customStyles}
               onChange={setSelectedAttributes}
+              menuPosition={'fixed'}
               isMulti
             />
           </div>
@@ -263,6 +263,7 @@ const SearchCourse = () => {
               options={semesterOptions}
               styles={customStyles}
               onChange={setSelectedSemesters}
+              menuPosition={'fixed'}
               isMulti
             />
           </div>
