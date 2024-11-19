@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
-
 import Courses from '../components/Courses';
 import filterIcon from '../assets/images/filter.svg';
 import expandedIcon from '../assets/images/expanded.svg';
@@ -18,15 +17,15 @@ const styles = {
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
-    height: '656px', // Set a fixed height
-    overflow: 'hidden', // Hide overflow to prevent height shift
+    height: '656px',
+    overflow: 'hidden',
   },
   coursesContainer: {
     flexGrow: 1,
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: 'calc(100% - 100px)', // Adjust max height to account for filter options
+    maxHeight: 'calc(100% - 100px)',
   },
   heading: {
     textAlign: 'left',
@@ -67,8 +66,8 @@ const styles = {
     backgroundColor: '#f3f4f6',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: '0.5rem',
-    overflowY: 'auto', // Enable vertical scrolling for filter options
-    maxHeight: '150px', // Set a max height for filter options
+    overflowY: 'auto',
+    maxHeight: '150px',
   },
   attribute: {
     fontSize: '15px',
@@ -140,12 +139,14 @@ const SearchCourse = () => {
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [selectedAttributes, setSelectedAttributes] = useState([]);
   const [selectedSemesters, setSelectedSemesters] = useState([]);
+  const [openCourses, setOpenCourses] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get(`${HOST}/api/v1/course/all`);
         setCourses(response.data);
+        setOpenCourses(Array(response.data.length).fill(false));
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
@@ -184,9 +185,18 @@ const SearchCourse = () => {
         `${HOST}/api/v1/course/search?${params.toString()}`,
       );
       setCourses(response.data);
+      setOpenCourses(Array(response.data.length).fill(false));
     } catch (error) {
       console.error('Error searching courses:', error);
     }
+  };
+
+  const toggleDropdown = (index) => {
+    setOpenCourses((prev) => {
+      const newOpenCourses = [...prev];
+      newOpenCourses[index] = !newOpenCourses[index];
+      return newOpenCourses;
+    });
   };
 
   return (
@@ -259,7 +269,11 @@ const SearchCourse = () => {
         </div>
       )}
       <div style={styles.coursesContainer}>
-        <Courses courses={courses} />
+        <Courses
+          courses={courses}
+          openCourses={openCourses}
+          toggleDropdown={toggleDropdown}
+        />
       </div>
     </div>
   );
