@@ -130,7 +130,7 @@ const semesterOptions = [
 
 const HOST = process.env.REACT_APP_API_HOST;
 
-const SearchCourse = () => {
+const SearchCourse = ({ isToolboxExpanded }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [courses, setCourses] = useState([]);
   const [searchPrompt, setSearchPrompt] = useState('');
