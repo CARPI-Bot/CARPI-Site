@@ -1,25 +1,36 @@
+import { useState } from 'react';
 import Logo from './Header';
 import About from '../components/About';
 import SearchCourse from '../components/SearchCourse';
 import Planner from '../components/Planner';
+import Toolbox from '../components/Toolbox';
 
 const Page2 = () => {
+  const [isToolboxExpanded, setIsToolboxExpanded] = useState(true);
+
+  const toggleToolbox = () => {
+    setIsToolboxExpanded((prev) => !prev);
+  };
+
   return (
     <div>
       <div style={styles.header}>
-        <Logo></Logo>
-        <About></About>
+        <Logo />
+        <About />
       </div>
-      <div style={styles.courses}>
-        <SearchCourse></SearchCourse>
-        {/* <SearchCourse></SearchCourse> */}
-        <Planner></Planner>
+      <div style={styles.section}>
+        <div style={styles.courses}>
+          <SearchCourse isToolboxExpanded={isToolboxExpanded} />
+          <Planner isToolboxExpanded={isToolboxExpanded} />
+        </div>
+        <Toolbox isExpanded={isToolboxExpanded} toggleExpand={toggleToolbox} />
       </div>
     </div>
   );
 };
 
 export default Page2;
+
 const styles = {
   header: {
     display: 'flex',
@@ -35,8 +46,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     color: 'black',
-    marginRight: '4rem',
+  },
+  section: {
+    marginRight: '4em',
   },
 };
