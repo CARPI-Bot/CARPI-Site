@@ -6,14 +6,31 @@ const Planner = ({ isToolboxExpanded }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [newSemesterName, setNewSemesterName] = useState('');
+  // const [newCourseName, setNewCourseName] = useState('');
 
   const addSemester = () => {
     const newSemester = {
       id: semesters.length + 1,
       name: `Semester ${semesters.length + 1}`,
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
+      courses: [],
     };
     setSemesters([...semesters, newSemester]);
+  };
+
+  const addCourse = (semesterId, courseName) => {
+    setSemesters(
+      semesters.map((semester) =>
+        semester.id === semesterId
+          ? { ...semester, courses: [...semester.courses, courseName] }
+          : semester,
+      ),
+    );
+  };
+  const handleAddCourse = (semesterId) => {
+    const courseName = prompt('Enter course name:');
+    if (courseName) {
+      addCourse(semesterId, courseName);
+    }
   };
 
   const openModal = (semester) => {
@@ -87,6 +104,7 @@ const Planner = ({ isToolboxExpanded }) => {
         </button>
       ) : (
         <div>
+          <button onClick={handleAddCourse}></button>
           <div
             className="space-y-4 max-h-[350px] overflow-y-auto min-h-[100px]"
             style={{

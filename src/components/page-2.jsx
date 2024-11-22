@@ -4,7 +4,6 @@ import About from '../components/About';
 import SearchCourse from '../components/SearchCourse';
 import Planner from '../components/Planner';
 import Toolbox from '../components/Toolbox';
-import { section } from 'framer-motion/client';
 
 const Page2 = () => {
   const [isToolboxExpanded, setIsToolboxExpanded] = useState(true);
