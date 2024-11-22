@@ -107,67 +107,34 @@ const Planner = ({ isToolboxExpanded }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div
-        className={`bg-red-100 w-6/12 p-5 ml-8 rounded-xl ${
-          isToolboxExpanded ? 'h-[35em]' : 'h-[40em]'
-        } transition-all duration-300`}
-      >
-        <h1 className="text-left text-2xl mb-4">Course Planner</h1>
+      <div style={styles.plannerContainer}>
+        <h1 style={styles.header}>Course Planner</h1>
 
         {semesters.length === 0 ? (
-          <button
-            onClick={addSemester}
-            className="bg-red-200 relative"
-            style={{
-              backgroundImage: 'url(../assets/images/Transparent_Carpi.svg)',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              borderRadius: '1em',
-              width: '100%',
-              height: '93%',
-            }}
-          >
-            <img
-              src={Logo}
-              alt="CARPI"
-              className="w-1/2 md:w-1/3 lg:w-1/4 opacity-100 absolute"
-              loading="lazy"
-              style={{
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-              }}
-            />
-            <h1
-              style={{
-                marginTop: '6em',
-                alignContent: 'center',
-                fontSize: '2em',
-              }}
-            >
-              Add Your First Semester
-            </h1>
+          <button onClick={addSemester} style={styles.addFirstSemesterButton}>
+            <img src={Logo} alt="CARPI" style={styles.logo} />
+            <h1 style={styles.addFirstSemesterText}>Add Your First Semester</h1>
           </button>
         ) : (
           <div>
-            <div className="space-y-4 max-h-[350px] overflow-y-auto">
+            <div style={styles.semesterContainer}>
               {semesters.map((semester) => (
-                <div key={semester.id} className="bg-gray-100 p-4 rounded-lg">
-                  <div className="flex justify-between items-center">
+                <div key={semester.id} style={styles.semesterCard}>
+                  <div style={styles.semesterHeader}>
                     <h2
-                      className="text-xl font-semibold cursor-pointer"
+                      style={styles.semesterTitle}
                       onClick={() => openModal(semester)}
                     >
                       {semester.name}
                     </h2>
                     <button
                       onClick={() => deleteSemester(semester.id)}
-                      className="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+                      style={styles.deleteSemesterButton}
                     >
                       X
                     </button>
                   </div>
-                  <div className="space-y-2">
+                  <div style={styles.courseContainer}>
                     {semester.courses.map((course, index) => (
                       <DragCourse
                         key={index}
@@ -179,7 +146,7 @@ const Planner = ({ isToolboxExpanded }) => {
                     ))}
                     <button
                       onClick={() => handleAddCourse(semester.id)}
-                      className="bg-red-500 text-white py-2 px-4 rounded-full"
+                      style={styles.addCourseButton}
                     >
                       + Add Course
                     </button>
@@ -187,37 +154,28 @@ const Planner = ({ isToolboxExpanded }) => {
                 </div>
               ))}
             </div>
-            <button
-              onClick={addSemester}
-              className="mt-4 bg-red-300 text-white py-2 px-4 rounded-full w-full"
-            >
+            <button onClick={addSemester} style={styles.addSemesterButton}>
               + Add New Semester
             </button>
           </div>
         )}
 
         {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-6 rounded-lg max-w-md w-full">
-              <h2 className="text-lg font-semibold mb-4">Edit Semester Name</h2>
+          <div style={styles.modalOverlay}>
+            <div style={styles.modal}>
+              <h2 style={styles.modalHeader}>Edit Semester Name</h2>
               <input
                 type="text"
                 value={newSemesterName}
                 onChange={(e) => setNewSemesterName(e.target.value)}
-                className="border border-gray-300 rounded w-full p-2 mb-4"
+                style={styles.input}
                 placeholder="Enter new semester name"
               />
-              <div className="flex justify-end space-x-4">
-                <button
-                  onClick={closeModal}
-                  className="bg-gray-300 text-black px-4 py-2 rounded"
-                >
+              <div style={styles.modalButtons}>
+                <button onClick={closeModal} style={styles.cancelButton}>
                   Cancel
                 </button>
-                <button
-                  onClick={handleNameChange}
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                >
+                <button onClick={handleNameChange} style={styles.submitButton}>
                   Submit
                 </button>
               </div>
@@ -230,3 +188,135 @@ const Planner = ({ isToolboxExpanded }) => {
 };
 
 export default Planner;
+
+// Styles Section
+const styles = {
+  plannerContainer: {
+    backgroundColor: '#FEE2E2',
+    width: '50%',
+    padding: '1em',
+    // marginLeft: '2em',
+    borderRadius: '1em',
+    height: '100%',
+    transition: 'all 0.3s ease',
+  },
+  header: {
+    fontSize: '2rem',
+    marginBottom: '1rem',
+    textAlign: 'left',
+  },
+  addFirstSemesterButton: {
+    position: 'relative',
+    backgroundColor: '#FECACA',
+    width: '100%',
+    borderRadius: '1em',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  logo: {
+    width: '25%',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '1em',
+  },
+  addFirstSemesterText: {
+    marginTop: '6em',
+    textAlign: 'center',
+    fontSize: '2em',
+  },
+  semesterContainer: {
+    maxHeight: '28em',
+    overflowY: 'auto',
+    gap: '1rem',
+  },
+  semesterCard: {
+    backgroundColor: '#E5E7EB',
+    padding: '1rem',
+    borderRadius: '10px',
+  },
+  semesterHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  semesterTitle: {
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+  },
+  deleteSemesterButton: {
+    backgroundColor: '#F87171',
+    color: 'white',
+    borderRadius: '50%',
+    width: '1.5rem',
+    height: '1.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  courseContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+  },
+  addCourseButton: {
+    backgroundColor: '#F87171',
+    color: 'white',
+    padding: '10px 20px',
+    borderRadius: '5px',
+  },
+  addSemesterButton: {
+    marginTop: '1rem',
+    backgroundColor: '#F87171',
+    color: 'white',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    width: '100%',
+  },
+  modalOverlay: {
+    position: 'fixed',
+    inset: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modal: {
+    backgroundColor: 'white',
+    padding: '1.5rem',
+    borderRadius: '10px',
+    maxWidth: '400px',
+    width: '100%',
+  },
+  modalHeader: {
+    fontSize: '1.5rem',
+    marginBottom: '1rem',
+  },
+  input: {
+    border: '1px solid #D1D5DB',
+    borderRadius: '5px',
+    width: '100%',
+    padding: '10px',
+    marginBottom: '1rem',
+  },
+  modalButtons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '0.5rem',
+  },
+  cancelButton: {
+    backgroundColor: '#D1D5DB',
+    padding: '10px 20px',
+    borderRadius: '5px',
+  },
+  submitButton: {
+    backgroundColor: '#F87171',
+    color: 'white',
+    padding: '10px 20px',
+    borderRadius: '5px',
+  },
+};

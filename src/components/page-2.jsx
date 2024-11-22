@@ -47,10 +47,11 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
+    // width: '95%',
   },
 
   section: {
-    marginLeft: '2.5em',
-    marginRight: '2em',
+    display: 'flex',
+    flexDirection: 'column',
   },
 };
