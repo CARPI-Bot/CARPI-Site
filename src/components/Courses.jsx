@@ -1,16 +1,9 @@
-import { useState } from 'react';
-
-const Courses = ({ courses }) => {
-  const [openCourses, setOpenCourses] = useState(
-    Array(courses.length).fill(false),
-  );
-
-  const toggleDropdown = (index) => {
-    setOpenCourses((prev) => {
-      const newOpenCourses = [...prev];
-      newOpenCourses[index] = !newOpenCourses[index];
-      return newOpenCourses;
-    });
+const Courses = ({ courses, openCourses, toggleDropdown }) => {
+  const displayCredit = (minCredit, maxCredit) => {
+    if (minCredit === maxCredit) {
+      return `${minCredit} Credits`;
+    }
+    return `${minCredit} - ${maxCredit} Credits`;
   };
 
   return (
@@ -27,19 +20,37 @@ const Courses = ({ courses }) => {
           >
             <div className="Names" style={styles.Names}>
               <h1 className="CourseID" style={styles.CourseID}>
-                {course.id}
+                {course.department}-{course.code}
               </h1>
               <h1 className="CourseName" style={styles.CourseName}>
-                {course.name}
+                {course.title}
               </h1>
             </div>
             <h1 className="CourseCredit" style={styles.CourseCredit}>
-              {course.credits} Credits
+              {displayCredit(course.creditMin, course.creditMax)}
             </h1>
           </div>
           {openCourses[index] && (
             <div className="CourseBlurb" style={styles.CourseBlurb}>
-              <p>{course.description}</p>
+              <p>{course.description || 'No description'}</p>
+              <div style={styles.bubbleContainer}>
+                {course.semesterList.length > 0 ? (
+                  <div style={styles.bubble}>
+                    Offered: {course.semesterList.join(', ')}
+                  </div>
+                ) : (
+                  <div style={styles.bubble}>No semesters offered</div>
+                )}
+              </div>
+              <div style={styles.bubbleContainer}>
+                {course.attributeList.length > 0 ? (
+                  <div style={styles.bubble}>
+                    Attributes: {course.attributeList.join(', ')}
+                  </div>
+                ) : (
+                  <div style={styles.bubble}>No attributes</div>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -87,9 +98,27 @@ const styles = {
   },
   CourseBlurb: {
     marginLeft: '2em',
+    marginRight: '2em',
     marginTop: '0.5em',
+    marginBottom: '0.5em',
     fontSize: '1em',
     color: '#555',
+    backgroundColor: '#e0e0e0', // Slightly darker background color
+    borderRadius: '8px',
+    padding: '1em',
+  },
+  bubbleContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '0.5em',
+    marginTop: '0.5em',
+  },
+  bubble: {
+    backgroundColor: '#d0d0d0', // Slightly darker background color for bubbles
+    borderRadius: '15px',
+    padding: '0.5em 1em',
+    fontSize: '0.9em',
+    color: '#333',
   },
 };
 
