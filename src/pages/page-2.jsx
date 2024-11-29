@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Logo from './Header';
-import About from '../components/About';
 import SearchCourse from '../components/SearchCourse';
 import Planner from '../components/Planner';
 import Toolbox from '../components/Toolbox';
@@ -13,18 +11,12 @@ const Page2 = () => {
   };
 
   return (
-    <div>
-      <div style={styles.header}>
-        <Logo />
-        <About />
+    <div style={styles.section}>
+      <div style={styles.courses}>
+        <SearchCourse isToolboxExpanded={isToolboxExpanded} />
+        <Planner isToolboxExpanded={isToolboxExpanded} />
       </div>
-      <div style={styles.section}>
-        <div style={styles.courses}>
-          <SearchCourse isToolboxExpanded={isToolboxExpanded} />
-          <Planner isToolboxExpanded={isToolboxExpanded} />
-        </div>
-        <Toolbox isExpanded={isToolboxExpanded} toggleExpand={toggleToolbox} />
-      </div>
+      <Toolbox isExpanded={isToolboxExpanded} toggleExpand={toggleToolbox} />
     </div>
   );
 };

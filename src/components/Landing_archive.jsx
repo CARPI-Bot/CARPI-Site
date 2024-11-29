@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Logo from '../assets/transparent_carpi.png';
 import Text from '../assets/CARPI-text.png';
-import Page2 from './page-2';
+import Page2 from '../pages/page-2';
+
+// Landing page with carpi logo. click to move to dashboard. Archived.
 
 const LandingPage = ({ onTransition }) => {
   return (

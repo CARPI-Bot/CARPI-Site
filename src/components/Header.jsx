@@ -1,10 +1,11 @@
 import CARPI from '../assets/images/Transparent_Carpi.svg';
 import '../assets/css/font.css';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 
 function Header() {
-  const [clickCount, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0);
 
   const handleClick = () => {
     setClickCount((prevCount) => {
@@ -25,6 +26,17 @@ function Header() {
           alt="Filler"
           onClick={handleClick}
         ></img>
+        <nav>
+          <Link to="/search-course" style={{ margin: '0 10px' }}>
+            Search Course
+          </Link>
+          <Link to="/toolbox" style={{ margin: '0 10px' }}>
+            Toolbox
+          </Link>
+          <Link to="/course-planner" style={{ margin: '0 10px' }}>
+            Course Planner
+          </Link>
+        </nav>
         <h1 className="text-3xl font-bold" style={styles.CARPI}>
           CARPI
         </h1>
