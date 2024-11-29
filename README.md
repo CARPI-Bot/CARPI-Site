@@ -1,9 +1,9 @@
 # CARPI Site
 Built with React.
 ## Project Setup
-Install dependencies: `npm install`
-Run in development: `npm start`
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies: `npm install`\
+Run in development: `npm start`\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\   
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
