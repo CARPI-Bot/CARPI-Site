@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function Header() {
-  const [, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0); // Click tracker for secret
 
+  // Secret Egg
   const handleClick = () => {
     setClickCount((prevCount) => {
       if (prevCount + 1 === 10) {
@@ -18,7 +19,7 @@ function Header() {
   };
 
   return (
-    <header className="bg-black-600 text-black mt-4 mb-2 flex justify-between">
+    <header className="bg-red-100 h-16 text-black flex justify-between">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
           className="size-24 rounded-full ml-8"

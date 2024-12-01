@@ -10,14 +10,10 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '50%',
-    minHeight: '25em',
     padding: '1.25rem',
-    marginLeft: '1.25rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
-    height: '656px',
     overflow: 'hidden',
   },
   coursesContainer: {
@@ -25,7 +21,6 @@ const styles = {
     borderRadius: '0.75rem',
     overflowY: 'auto',
     paddingBottom: '10px',
-    maxHeight: 'calc(100% - 100px)',
   },
   heading: {
     textAlign: 'left',
@@ -189,100 +184,91 @@ const SearchCourse = ({ isToolboxExpanded }) => {
     }
   };
 
-  const toggleDropdown = (index) => {
-    setOpenCourses((prev) => {
-      const newOpenCourses = [...prev];
-      newOpenCourses[index] = !newOpenCourses[index];
-      return newOpenCourses;
-    });
-  };
-
   return (
-    <div
-      style={{
-        ...styles.container,
-        height: isToolboxExpanded ? '32em' : '36em',
-      }}
-    >
-      <h1 className="text-left text-2xl pb-2">Search Course</h1>
-      <div style={styles.searchFilterContainer}>
-        <input
-          type="text"
-          style={styles.input}
-          placeholder="Find Courses Here..."
-          value={searchPrompt}
-          onChange={(e) => setSearchPrompt(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-        />
-        <div
-          style={styles.filter}
-          onClick={() => setShowFilterOptions(!showFilterOptions)}
-        >
-          <img src={filterIcon} alt="filter icon" />
-          Filter
-          {!showFilterOptions && <img src={closedIcon} alt="closed icon" />}
-          {showFilterOptions && <img src={expandedIcon} alt="closed icon" />}
+    <div className="flex-grow p-4">
+      <div
+        style={{
+          ...styles.container,
+          height: isToolboxExpanded ? '32em' : '36em',
+        }}
+        className="bg-black"
+      >
+        <h1 className="text-left text-2xl pb-2">Search Course</h1>
+        <div style={styles.searchFilterContainer}>
+          <input
+            type="text"
+            style={styles.input}
+            placeholder="Find Courses Here..."
+            value={searchPrompt}
+            onChange={(e) => setSearchPrompt(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          />
+          <div
+            style={styles.filter}
+            onClick={() => setShowFilterOptions(!showFilterOptions)}
+          >
+            <img src={filterIcon} alt="filter icon" />
+            Filter
+            {!showFilterOptions && <img src={closedIcon} alt="closed icon" />}
+            {showFilterOptions && <img src={expandedIcon} alt="closed icon" />}
+          </div>
+          <button onClick={handleSearch}>Search</button>
         </div>
-        <button onClick={handleSearch}>Search</button>
-      </div>
-      {showFilterOptions && (
-        <div style={styles.filterOptions}>
-          <div>
-            <div style={styles.attribute}>Subject</div>
-            <Select
-              className="basic-single"
-              classNamePrefix="select"
-              defaultValue={subjectOptions[0]}
-              isSearchable
-              name="subject"
-              options={subjectOptions}
-              styles={customStyles}
-              value={selectedSubjects}
-              onChange={setSelectedSubjects}
-              menuPosition={'fixed'}
-              isMulti
-            />
+        {showFilterOptions && (
+          <div style={styles.filterOptions}>
+            <div>
+              <div style={styles.attribute}>Subject</div>
+              <Select
+                className="basic-single"
+                classNamePrefix="select"
+                defaultValue={subjectOptions[0]}
+                isSearchable
+                name="subject"
+                options={subjectOptions}
+                styles={customStyles}
+                value={selectedSubjects}
+                onChange={setSelectedSubjects}
+                menuPosition={'fixed'}
+                isMulti
+              />
+            </div>
+            <div>
+              <div style={styles.attribute}>Attribute</div>
+              <Select
+                className="basic-single"
+                classNamePrefix="select"
+                defaultValue={attributeOptions[0]}
+                isSearchable
+                name="attribute"
+                options={attributeOptions}
+                styles={customStyles}
+                value={selectedAttributes}
+                onChange={setSelectedAttributes}
+                menuPosition={'fixed'}
+                isMulti
+              />
+            </div>
+            <div>
+              <div style={styles.attribute}>Semesters Offered</div>
+              <Select
+                className="basic-single"
+                classNamePrefix="select"
+                defaultValue={semesterOptions[0]}
+                isSearchable
+                name="semester"
+                options={semesterOptions}
+                styles={customStyles}
+                value={selectedSemesters}
+                onChange={setSelectedSemesters}
+                menuPosition={'fixed'}
+                isMulti
+              />
+            </div>
           </div>
-          <div>
-            <div style={styles.attribute}>Attribute</div>
-            <Select
-              className="basic-single"
-              classNamePrefix="select"
-              defaultValue={attributeOptions[0]}
-              isSearchable
-              name="attribute"
-              options={attributeOptions}
-              styles={customStyles}
-              value={selectedAttributes}
-              onChange={setSelectedAttributes}
-              menuPosition={'fixed'}
-              isMulti
-            />
-          </div>
-          <div>
-            <div style={styles.attribute}>Semesters Offered</div>
-            <Select
-              className="basic-single"
-              classNamePrefix="select"
-              defaultValue={semesterOptions[0]}
-              isSearchable
-              name="semester"
-              options={semesterOptions}
-              styles={customStyles}
-              value={selectedSemesters}
-              onChange={setSelectedSemesters}
-              menuPosition={'fixed'}
-              isMulti
-            />
-          </div>
+        )}
+        <div style={styles.coursesContainer}>
+          <Courses courses={courses} openCourses={openCourses} />
         </div>
-      )}
-      <div style={styles.coursesContainer}>
-        <Courses
-          courses={courses}
-          openCourses={openCourses}
-          toggleDropdown={toggleDropdown}
-        />
       </div>
     </div>
   );

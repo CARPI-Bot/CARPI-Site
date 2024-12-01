@@ -1,19 +1,14 @@
+import { useState } from 'react';
 import expandedIcon from '../assets/images/expanded.svg';
 import collapsedIcon from '../assets/images/closed.svg';
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'column',
     width: '100%',
-    minHeight: '5em',
     padding: '1rem',
     backgroundColor: 'rgb(254, 226, 226)',
     borderRadius: '0.75rem',
     fontFamily: 'Single Day, cursive',
-    height: '20vh',
-    marginLeft: '1.25rem',
-    marginTop: '1.25rem',
     transition: 'height 0.3s ease', // Smooth transition for collapse
   },
   header: {
@@ -31,21 +26,32 @@ const styles = {
   },
 };
 
-const Toolbox = ({ isExpanded, toggleExpand }) => {
+const Toolbox = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  const toggleExpand = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
   return (
-    <div style={{ ...styles.container, height: isExpanded ? '20vh' : '2em' }}>
-      <div style={styles.header} onClick={toggleExpand}>
-        <h1 className="text-left text-2xl pb-2">Toolbox</h1>
-        <img
-          src={isExpanded ? expandedIcon : collapsedIcon}
-          alt="Toggle arrow"
-          style={{
-            transform: isExpanded ? 'rotate(0deg)' : 'rotate(180deg)',
-            transition: 'transform 0.3s ease',
-          }}
-        />
+    <div className="flex flex-col flex-grow p-4 ">
+      <div
+        style={{ ...styles.container }}
+        className={'' + (isExpanded ? 'flex-grow' : '')}
+      >
+        <div style={styles.header} onClick={toggleExpand}>
+          <h1 className="text-left text-2xl pb-2">Toolbox</h1>
+          <img
+            src={isExpanded ? expandedIcon : collapsedIcon}
+            alt="Toggle arrow"
+            style={{
+              transform: isExpanded ? 'rotate(0deg)' : 'rotate(180deg)',
+              transition: 'transform 0.3s ease',
+            }}
+          />
+        </div>
+        {isExpanded && <div style={styles.space}></div>}
       </div>
-      {isExpanded && <div style={styles.space}></div>}
     </div>
   );
 };

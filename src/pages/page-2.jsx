@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SearchCourse from '../components/SearchCourse';
-import Planner from '../components/Planner';
+import Planner from './CoursePlanner';
 import Toolbox from '../components/Toolbox';
 
 const Page2 = () => {

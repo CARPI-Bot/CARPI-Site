@@ -11,20 +11,20 @@ import Toolbox from './pages/Toolbox';
 
 const App = () => {
   return (
-    <div className="container">
-      <Router>
+    <Router>
+      <div className="w-screen h-screen flex flex-col">
         <Header />
-        <main style={{ padding: '20px' }}>
+        <main className="flex grow ">
           <Routes>
             {/* Redirect from / to /course-search */}
-            <Route path="/" element={<Navigate to="/course-search" />} />
+            <Route path="/" element={<Navigate to="/search-course" />} />
             <Route path="/search-course" element={<SearchCourse />} />
             <Route path="/toolbox" element={<Toolbox />} />
             <Route path="/course-planner" element={<CoursePlanner />} />
           </Routes>
         </main>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 };
 
