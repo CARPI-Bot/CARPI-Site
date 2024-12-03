@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import Logo from '../assets/transparent_carpi.png';
 import Semester from '../components/Semester';
 
-const Planner = ({ isToolboxExpanded, semesters }) => {
+const Planner = ({
+  isToolboxExpanded,
+  semesters,
+  addSemester,
+  deleteSemester,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [newSemesterName, setNewSemesterName] = useState('');
-
-  // const addSemester = () => {
-  //   const newSemester = {
-  //     id: semesters.length + 1,
-  //     name: `Semester ${semesters.length + 1}`,
-  //     courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-  //   };
-  //   setSemesters([...semesters, newSemester]);
-  // };
 
   const openModal = (semester) => {
     setSelectedSemester(semester);
@@ -39,10 +35,6 @@ const Planner = ({ isToolboxExpanded, semesters }) => {
   //   closeModal();
   // };
 
-  // const deleteSemester = (semesterId) => {
-  //   setSemesters(semesters.filter((semester) => semester.id !== semesterId));
-  // };
-
   return (
     <div className="flex flex-col flex-grow p-4 ">
       <div
@@ -55,7 +47,7 @@ const Planner = ({ isToolboxExpanded, semesters }) => {
         <h1 className="text-left text-2xl pb-2">Course Planner</h1>
         {semesters.length === 0 ? (
           <button
-            // onClick={addSemester}
+            onClick={addSemester}
             className="bg-red-200 relative"
             style={{
               backgroundImage: 'url(../assets/images/Transparent_Carpi.svg)',
@@ -97,11 +89,14 @@ const Planner = ({ isToolboxExpanded, semesters }) => {
               }}
             >
               {semesters.map((semester) => (
-                <Semester semester={semester}></Semester>
+                <Semester
+                  semester={semester}
+                  deleteSemester={deleteSemester}
+                ></Semester>
               ))}
             </div>
             <button
-              // onClick={addSemester}
+              onClick={addSemester}
               className="mt-4 bg-red-300 text-white py-2 px-4 rounded-full w-full"
               style={{
                 marginTop: isToolboxExpanded ? '1em' : '1em',

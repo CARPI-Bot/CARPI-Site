@@ -18,9 +18,22 @@ const App = () => {
     {
       id: 1,
       name: 'Semester 1',
-      courses: ['Course 1'],
+      courses: [],
     },
   ]);
+
+  const addSemester = () => {
+    const newSemester = {
+      id: semesters.length + 1,
+      name: `Semester ${semesters.length + 1}`,
+      courses: [],
+    };
+    setSemesters([...semesters, newSemester]);
+  };
+
+  const deleteSemester = (semesterId) => {
+    setSemesters(semesters.filter((semester) => semester.id !== semesterId));
+  };
 
   const addCourseToSemester = (newCourse, semesterName) => {
     setSemesters((prevSemesters) =>
@@ -82,7 +95,13 @@ const App = () => {
             />
             <Route
               path="/course-planner"
-              element={<CoursePlanner semesters={semesters} />}
+              element={
+                <CoursePlanner
+                  semesters={semesters}
+                  addSemester={addSemester}
+                  deleteSemester={deleteSemester}
+                />
+              }
             />
           </Routes>
         </main>

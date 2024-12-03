@@ -12,7 +12,7 @@ const Course = ({
   const handleChange = (option) => {
     console.log('Selected option:', option);
     console.log(course);
-    if ((option.value = 'toolbox')) {
+    if (option.value === 'toolbox') {
       addCourseToToolbox(course);
     } else {
       addCourseToSemester(course, option.value);

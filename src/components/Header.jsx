@@ -19,10 +19,10 @@ function Header() {
   };
 
   return (
-    <header className="bg-red-100 h-16 text-black flex justify-between">
+    <header className="bg-red-100 h-16 text-black flex justify-between px-2">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
-          className="size-24 rounded-full ml-8"
+          className="size-16 rounded-full ml-4"
           src={CARPI}
           alt="Filler"
           onClick={handleClick}
