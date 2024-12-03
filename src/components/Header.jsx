@@ -1,11 +1,13 @@
 import CARPI from '../assets/images/Transparent_Carpi.svg';
 import '../assets/css/font.css';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 
 function Header() {
-  const [clickCount, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0); // Click tracker for secret
 
+  // Secret Egg
   const handleClick = () => {
     setClickCount((prevCount) => {
       if (prevCount + 1 === 10) {
@@ -17,14 +19,25 @@ function Header() {
   };
 
   return (
-    <header className="bg-black-600 text-black mt-4 mb-2 flex justify-between">
+    <header className="bg-red-100 h-16 text-black flex justify-between px-2">
       <div className="container mx-auto flex flex-row justify-between items-center">
         <img
-          className="size-24 rounded-full ml-8"
+          className="size-16 rounded-full ml-4"
           src={CARPI}
           alt="Filler"
           onClick={handleClick}
         ></img>
+        <nav>
+          <Link to="/search-course" style={{ margin: '0 10px' }}>
+            Search Course
+          </Link>
+          <Link to="/toolbox" style={{ margin: '0 10px' }}>
+            Toolbox
+          </Link>
+          <Link to="/course-planner" style={{ margin: '0 10px' }}>
+            Course Planner
+          </Link>
+        </nav>
         <h1 className="text-3xl font-bold" style={styles.CARPI}>
           CARPI
         </h1>
