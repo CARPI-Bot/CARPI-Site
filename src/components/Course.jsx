@@ -68,17 +68,20 @@ const Course = ({
               <div style={styles.bubble}>No attributes</div>
             )}
           </div>
-          <Select
-            options={[
-              ...semesters.map((s) => {
-                return { value: s.name, label: s.name };
-              }),
-              { value: 'toolbox', label: 'Toolbox' },
-            ]}
-            value={selectedOption}
-            onChange={handleChange}
-            placeholder="Add course to..."
-          />
+
+          {semesters && (
+            <Select
+              options={[
+                ...semesters.map((s) => {
+                  return { value: s.name, label: s.name };
+                }),
+                { value: 'toolbox', label: 'Toolbox' },
+              ]}
+              value={selectedOption}
+              onChange={handleChange}
+              placeholder="Add course to..."
+            />
+          )}
         </div>
       )}
     </div>

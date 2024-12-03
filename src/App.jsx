@@ -75,7 +75,7 @@ const App = () => {
     <Router>
       <div className="w-screen h-screen flex flex-col">
         <Header />
-        <main className="flex grow ">
+        <main className="flex flex-grow ">
           <Routes>
             {/* Redirect from / to /course-search */}
             <Route path="/" element={<Navigate to="/search-course" />} />

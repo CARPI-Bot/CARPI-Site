@@ -190,13 +190,13 @@ const SearchCourse = ({
   };
 
   return (
-    <div className="flex-grow p-4">
+    <div className="flex-col flex-grow p-4">
       <div
         style={{
           ...styles.container,
-          height: isToolboxExpanded ? '32em' : '36em',
+          // height: isToolboxExpanded ? '' : '36em',
         }}
-        className="bg-black"
+        className="flex-grow"
       >
         <h1 className="text-left text-2xl pb-2">Search Course</h1>
         <div style={styles.searchFilterContainer}>
