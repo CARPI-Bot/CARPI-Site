@@ -1,7 +1,12 @@
 import Select from 'react-select';
 import { useState } from 'react';
 
-const Course = ({ course, addCourseToToolbox, semesters }) => {
+const Course = ({
+  course,
+  addCourseToToolbox,
+  addCourseToSemester,
+  semesters,
+}) => {
   const [selectedOption] = useState(null);
 
   const handleChange = (option) => {
@@ -10,7 +15,7 @@ const Course = ({ course, addCourseToToolbox, semesters }) => {
     if ((option.value = 'toolbox')) {
       addCourseToToolbox(course);
     } else {
-      // add to semester bro
+      addCourseToSemester(course, option.value);
     }
   };
   const [dropdown, setDropdown] = useState(false);
@@ -63,18 +68,18 @@ const Course = ({ course, addCourseToToolbox, semesters }) => {
               <div style={styles.bubble}>No attributes</div>
             )}
           </div>
+          <Select
+            options={[
+              ...semesters.map((s) => {
+                return { value: s.name, label: s.name };
+              }),
+              { value: 'toolbox', label: 'Toolbox' },
+            ]}
+            value={selectedOption}
+            onChange={handleChange}
+          />
         </div>
       )}
-      <Select
-        options={[
-          ...semesters.map((s) => {
-            return { value: s.name, label: s.name };
-          }),
-          { value: 'toolbox', label: 'Toolbox' },
-        ]}
-        value={selectedOption}
-        onChange={handleChange}
-      />
     </div>
   );
 };

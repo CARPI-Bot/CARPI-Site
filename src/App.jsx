@@ -18,9 +18,23 @@ const App = () => {
     {
       id: 1,
       name: 'Semester 1',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
+      courses: ['Course 1'],
     },
   ]);
+
+  const addCourseToSemester = (newCourse, semesterName) => {
+    setSemesters((prevSemesters) =>
+      prevSemesters.map((sem) => {
+        if (sem.name === semesterName) {
+          return {
+            ...sem,
+            courses: [...sem.courses, newCourse], // Add newCourse to the courses array
+          };
+        }
+        return sem; // Return the semester unchanged if it doesn't match
+      }),
+    );
+  };
 
   const addCourseToToolbox = (newCourse) => {
     setToolboxCourses((prevCourses) => {
@@ -57,6 +71,7 @@ const App = () => {
               element={
                 <SearchCourse
                   addCourseToToolbox={addCourseToToolbox}
+                  addCourseToSemester={addCourseToSemester}
                   semesters={semesters}
                 />
               }
@@ -65,7 +80,10 @@ const App = () => {
               path="/toolbox"
               element={<Toolbox courses={toolBoxCourses} />}
             />
-            <Route path="/course-planner" element={<CoursePlanner />} />
+            <Route
+              path="/course-planner"
+              element={<CoursePlanner semesters={semesters} />}
+            />
           </Routes>
         </main>
       </div>

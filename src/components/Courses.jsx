@@ -1,6 +1,11 @@
 import Course from './Course';
 
-const Courses = ({ courses, addCourseToToolbox, semesters }) => {
+const Courses = ({
+  courses,
+  addCourseToToolbox,
+  addCourseToSemester,
+  semesters,
+}) => {
   return (
     <div
       className="bg-gray-100 bg-contain p-2 mt-2 rounded-xl max-h-full"
@@ -10,6 +15,7 @@ const Courses = ({ courses, addCourseToToolbox, semesters }) => {
         <Course
           course={course}
           addCourseToToolbox={addCourseToToolbox}
+          addCourseToSemester={addCourseToSemester}
           semesters={semesters}
         ></Course>
       ))}

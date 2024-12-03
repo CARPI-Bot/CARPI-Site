@@ -2,31 +2,19 @@ import React, { useState } from 'react';
 import Logo from '../assets/transparent_carpi.png';
 import Semester from '../components/Semester';
 
-const Planner = ({ isToolboxExpanded }) => {
-  const [semesters, setSemesters] = useState([
-    {
-      id: 1,
-      name: 'Semester 1',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    },
-    {
-      id: 2,
-      name: 'Semester 2',
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    },
-  ]);
+const Planner = ({ isToolboxExpanded, semesters }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [newSemesterName, setNewSemesterName] = useState('');
 
-  const addSemester = () => {
-    const newSemester = {
-      id: semesters.length + 1,
-      name: `Semester ${semesters.length + 1}`,
-      courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
-    };
-    setSemesters([...semesters, newSemester]);
-  };
+  // const addSemester = () => {
+  //   const newSemester = {
+  //     id: semesters.length + 1,
+  //     name: `Semester ${semesters.length + 1}`,
+  //     courses: ['Course 1', 'Course 2', 'Course 3', 'Course 4'],
+  //   };
+  //   setSemesters([...semesters, newSemester]);
+  // };
 
   const openModal = (semester) => {
     setSelectedSemester(semester);
@@ -40,20 +28,20 @@ const Planner = ({ isToolboxExpanded }) => {
     setNewSemesterName('');
   };
 
-  const handleNameChange = () => {
-    setSemesters(
-      semesters.map((semester) =>
-        semester.id === selectedSemester.id
-          ? { ...semester, name: newSemesterName }
-          : semester,
-      ),
-    );
-    closeModal();
-  };
+  // const handleNameChange = () => {
+  //   setSemesters(
+  //     semesters.map((semester) =>
+  //       semester.id === selectedSemester.id
+  //         ? { ...semester, name: newSemesterName }
+  //         : semester,
+  //     ),
+  //   );
+  //   closeModal();
+  // };
 
-  const deleteSemester = (semesterId) => {
-    setSemesters(semesters.filter((semester) => semester.id !== semesterId));
-  };
+  // const deleteSemester = (semesterId) => {
+  //   setSemesters(semesters.filter((semester) => semester.id !== semesterId));
+  // };
 
   return (
     <div className="flex flex-col flex-grow p-4 ">
@@ -67,7 +55,7 @@ const Planner = ({ isToolboxExpanded }) => {
         <h1 className="text-left text-2xl pb-2">Course Planner</h1>
         {semesters.length === 0 ? (
           <button
-            onClick={addSemester}
+            // onClick={addSemester}
             className="bg-red-200 relative"
             style={{
               backgroundImage: 'url(../assets/images/Transparent_Carpi.svg)',
@@ -113,7 +101,7 @@ const Planner = ({ isToolboxExpanded }) => {
               ))}
             </div>
             <button
-              onClick={addSemester}
+              // onClick={addSemester}
               className="mt-4 bg-red-300 text-white py-2 px-4 rounded-full w-full"
               style={{
                 marginTop: isToolboxExpanded ? '1em' : '1em',
@@ -135,7 +123,7 @@ const Planner = ({ isToolboxExpanded }) => {
                 onChange={(e) => setNewSemesterName(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && newSemesterName !== '') {
-                    handleNameChange();
+                    // handleNameChange();
                   } else if (e.key === 'Escape') {
                     closeModal();
                   } else if (e.key === 'Enter' && newSemesterName === '') {
@@ -153,7 +141,7 @@ const Planner = ({ isToolboxExpanded }) => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleNameChange}
+                  // onClick={handleNameChange}
                   className="bg-red-500 text-white px-4 py-2 rounded"
                 >
                   Submit
