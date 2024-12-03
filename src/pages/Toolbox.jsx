@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import expandedIcon from '../assets/images/expanded.svg';
 import collapsedIcon from '../assets/images/closed.svg';
+import Courses from '../components/Courses';
 
 const styles = {
   container: {
@@ -26,7 +27,7 @@ const styles = {
   },
 };
 
-const Toolbox = () => {
+const Toolbox = ({ courses }) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpand = () => {
@@ -50,7 +51,11 @@ const Toolbox = () => {
             }}
           />
         </div>
-        {isExpanded && <div style={styles.space}></div>}
+        {isExpanded && (
+          <div style={styles.space}>
+            <Courses courses={courses} />
+          </div>
+        )}
       </div>
     </div>
   );

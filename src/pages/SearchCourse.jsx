@@ -125,7 +125,7 @@ const semesterOptions = [
 
 const HOST = process.env.REACT_APP_API_HOST;
 
-const SearchCourse = ({ isToolboxExpanded }) => {
+const SearchCourse = ({ isToolboxExpanded, addCourseToToolbox, semesters }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [courses, setCourses] = useState([]);
   const [searchPrompt, setSearchPrompt] = useState('');
@@ -267,7 +267,12 @@ const SearchCourse = ({ isToolboxExpanded }) => {
           </div>
         )}
         <div style={styles.coursesContainer}>
-          <Courses courses={courses} openCourses={openCourses} />
+          <Courses
+            courses={courses}
+            openCourses={openCourses}
+            addCourseToToolbox={addCourseToToolbox}
+            semesters={semesters}
+          />
         </div>
       </div>
     </div>

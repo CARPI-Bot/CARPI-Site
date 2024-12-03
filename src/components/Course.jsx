@@ -1,6 +1,18 @@
+import Select from 'react-select';
 import { useState } from 'react';
 
-const Course = ({ course }) => {
+const Course = ({ course, addCourseToToolbox, semesters }) => {
+  const [selectedOption] = useState(null);
+
+  const handleChange = (option) => {
+    console.log('Selected option:', option);
+    console.log(course);
+    if ((option.value = 'toolbox')) {
+      addCourseToToolbox(course);
+    } else {
+      // add to semester bro
+    }
+  };
   const [dropdown, setDropdown] = useState(false);
 
   const toggleDropdown = () => {
@@ -53,6 +65,16 @@ const Course = ({ course }) => {
           </div>
         </div>
       )}
+      <Select
+        options={[
+          ...semesters.map((s) => {
+            return { value: s.name, label: s.name };
+          }),
+          { value: 'toolbox', label: 'Toolbox' },
+        ]}
+        value={selectedOption}
+        onChange={handleChange}
+      />
     </div>
   );
 };

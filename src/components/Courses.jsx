@@ -1,13 +1,17 @@
 import Course from './Course';
 
-const Courses = ({ courses, openCourses }) => {
+const Courses = ({ courses, addCourseToToolbox, semesters }) => {
   return (
     <div
       className="bg-gray-100 bg-contain p-2 mt-2 rounded-xl max-h-full"
       style={styles.Container}
     >
       {courses.map((course, index) => (
-        <Course course={course}></Course>
+        <Course
+          course={course}
+          addCourseToToolbox={addCourseToToolbox}
+          semesters={semesters}
+        ></Course>
       ))}
     </div>
   );
