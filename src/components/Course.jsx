@@ -77,6 +77,7 @@ const Course = ({
             ]}
             value={selectedOption}
             onChange={handleChange}
+            placeholder="Add course to..."
           />
         </div>
       )}

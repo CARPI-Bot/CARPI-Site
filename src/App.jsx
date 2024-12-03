@@ -91,7 +91,9 @@ const App = () => {
             />
             <Route
               path="/toolbox"
-              element={<Toolbox courses={toolBoxCourses} />}
+              element={
+                <Toolbox courses={toolBoxCourses} semesters={semesters} />
+              }
             />
             <Route
               path="/course-planner"

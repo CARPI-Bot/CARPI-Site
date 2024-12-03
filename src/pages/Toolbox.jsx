@@ -27,7 +27,7 @@ const styles = {
   },
 };
 
-const Toolbox = ({ courses }) => {
+const Toolbox = ({ courses, semesters }) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpand = () => {
@@ -53,7 +53,7 @@ const Toolbox = ({ courses }) => {
         </div>
         {isExpanded && (
           <div style={styles.space}>
-            <Courses courses={courses} />
+            <Courses courses={courses} semesters={semesters} />
           </div>
         )}
       </div>

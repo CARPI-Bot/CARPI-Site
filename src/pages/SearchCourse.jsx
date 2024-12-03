@@ -210,6 +210,7 @@ const SearchCourse = ({
           />
           <div
             style={styles.filter}
+            className="hover:cursor-pointer"
             onClick={() => setShowFilterOptions(!showFilterOptions)}
           >
             <img src={filterIcon} alt="filter icon" />
