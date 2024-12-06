@@ -13,7 +13,9 @@ const Course = ({
     console.log('Selected option:', option);
     console.log(course);
     if (option.value === 'toolbox') {
-      addCourseToToolbox(course);
+      if (addCourseToToolbox) {
+        addCourseToToolbox(course);
+      }
     } else {
       addCourseToSemester(course, option.value);
     }
