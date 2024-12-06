@@ -92,7 +92,11 @@ const App = () => {
             <Route
               path="/toolbox"
               element={
-                <Toolbox courses={toolBoxCourses} semesters={semesters} />
+                <Toolbox
+                  courses={toolBoxCourses}
+                  semesters={semesters}
+                  addCourseToSemester={addCourseToSemester}
+                />
               }
             />
             <Route
