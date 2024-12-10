@@ -63,13 +63,13 @@ const App = () => {
     });
   };
 
-  const removeCourseFromToolbox = (courseToRemove) => {
-    setToolboxCourses((prevCourses) =>
-      prevCourses.filter(
-        (course) => JSON.stringify(course) !== JSON.stringify(courseToRemove),
-      ),
-    );
-  };
+  // const removeCourseFromToolbox = (courseToRemove) => {
+  //   setToolboxCourses((prevCourses) =>
+  //     prevCourses.filter(
+  //       (course) => JSON.stringify(course) !== JSON.stringify(courseToRemove),
+  //     ),
+  //   );
+  // };
 
   return (
     <Router>
